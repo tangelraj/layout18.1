@@ -1,0 +1,1007 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetPalooza</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top Contact Bar */
+    .top-bar {
+      background: #f1f1f1;
+      padding: 5px 30px;
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+    }
+    .top-bar i {
+      margin-right: 5px;
+      color: black;
+    }
+    .top-bar a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* Main Navbar */
+    .navbar-custom {
+      background-color: #1f4ed8; /* Blue */
+      padding: 10px 30px;
+    }
+
+    .navbar-custom .navbar-brand {
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .navbar-custom .nav-link {
+      font-weight: 600;
+      color: white !important;
+      margin: 0 8px;
+    }
+
+    .navbar-custom .nav-link.active {
+      color: yellow !important;
+    }
+
+    .search-bar {
+      width: 350px;
+      border-radius: 50px;
+      padding-left: 35px;
+    }
+
+    .search-wrapper {
+      position: relative;
+    }
+
+    .search-wrapper i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: black;
+      font-size: 18px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: yellow;
+      color: black;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+     .custom-navbar {
+      background-color: #1a4dc9; /* Blue background */
+    }
+    .custom-navbar .nav-link {
+      color: white;
+      font-weight: 600;
+      margin-right: 15px;
+    }
+    .custom-navbar .nav-link:hover,
+    .custom-navbar .dropdown:hover > .nav-link {
+      color: #ffd700; /* Gold hover */
+    }
+    .dropdown-menu {
+      border-radius: 0.5rem;
+      
+    }
+    .co1{
+        display: flex;
+        flex-direction: row;
+    }
+    .carousel-item {
+      height: 400px; /* adjust height */
+    }
+    .carousel-left img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .carousel-right {
+      background-color: #a5f7b3; /* light green */
+      padding: 40px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+    }
+    .carousel-right h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .carousel-right .icon-text {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .carousel-right .icon-text i {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+    .shop-btn {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 12px 30px;
+      border: none;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+    .shop-btn:hover {
+      background-color: #084298;
+    }
+    .umbrella {
+      position: absolute;
+      top: 20px;
+      right: 40px;
+      width: 100px;
+    }
+    .pet-card {
+      width: 150px;
+      height: 150px;
+      border-radius: 30%;
+      background-color: #90ee90; /* light green */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .pet-card img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .pet-card:hover {
+      transform: scale(1.1);
+    }
+
+    .pet-label {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: 500;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      background: #fff;
+      transition: transform 0.3s ease;
+      min-width: 220px;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .star-rating {
+      color: gold;
+      font-size: 1.1rem;
+    }
+
+    .carousel-inner {
+      display: flex;
+    }
+
+    .carousel-item {
+      flex: 0 0 auto;
+      margin-right: 15px;
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+      width: 4%;
+    }
+    .promo-section {
+      border-radius: 20px;
+      overflow: hidden;
+      
+    }
+
+    .promo-left {
+      background: #0057ff; /* Blue Background */
+      color: white;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .promo-left h3 {
+      font-weight: 700;
+    }
+
+    .promo-left p {
+      margin: 15px 0;
+      font-size: 1.1rem;
+    }
+
+    .promo-btn {
+      background: white;
+      color: black;
+      font-weight: 700;
+      border-radius: 30px;
+      padding: 12px 30px;
+      border: none;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .promo-btn:hover {
+      background: #f0f0f0;
+    }
+
+    .promo-img {
+      position: relative;
+      height: 100%;
+      margin-left: -13px;
+    }
+
+    .promo-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .promo-badge {
+      position: absolute;
+      top: 30%;
+      left: -50px;
+      background: white;
+      color: black;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    }
+.promo-banner {
+      background: #90ee90; /* light green */
+      border-radius: 15px;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+    .promo-banner h5 {
+      font-weight: 700;
+    }
+    .promo-banner img {
+      max-height: 100px;
+    }
+    .promo-btn {
+      background: #0057ff;
+      color: white;
+      font-weight: 600;
+      border-radius: 30px;
+      padding: 10px 25px;
+      border: none;
+      transition: 0.3s;
+    }
+    .promo-btn:hover {
+      background: #0040c7;
+    }
+
+    /* Pet Services */
+    .services-section {
+      text-align: center;
+    }
+    .service-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .service-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+    .service-title {
+      background: #0057ff;
+      color: white;
+      font-weight: bold;
+      padding: 10px;
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .service-desc {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+    footer {
+      background-color: #0d47a1; /* Blue background */
+      color: white;
+      padding: 50px 20px 30px;
+      border-radius: 15px 15px 0 0;
+    }
+    footer h5 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    footer ul li {
+      margin-bottom: 8px;
+    }
+    footer ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+    footer ul li a:hover {
+      color: #ffeb3b; /* Yellow on hover */
+    }
+    .social-icons a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 12px;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ffeb3b;
+    }
+    .subscribe-box input {
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border: none;
+    }
+    .subscribe-box button {
+      background: white;
+      color: #0d47a1;
+      font-weight: bold;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      transition: 0.3s;
+    }
+    .subscribe-box button:hover {
+      background: #ffeb3b;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Contact Bar -->
+  <div class="top-bar">
+    <span><i class="bi bi-telephone"></i> +91-1234567890</span>
+    <a href="mailto:Support@petpalooza.com"><i class="bi bi-envelope"></i> Support@petpalooza.com</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/logo.jpg' %}">
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper mx-3">
+        <i class="bi bi-search"></i>
+        <input class="form-control search-bar" type="search" placeholder="Search for products">
+      </div>
+
+      <!-- Hamburger for mobile -->
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person"></i> Log In</a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="{% url 'cart' %}"><i class="bi bi-cart"></i> Cart</a>
+            <span class="cart-badge">1</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid justify-content-center">
+      <ul class="navbar-nav">
+        <!-- Dog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'dog' %}" id="dogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dog
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dogDropdown">
+          <div class="co1">
+          <div class="co2">
+            <li><a class="dropdown-item" href="#">Dry & Wet Food</a></li>
+            <li><a class="dropdown-item" href="#">Dry dog food</a></li>
+            <li><a class="dropdown-item" href="#">Wet dog food</a></li>
+            <li><a class="dropdown-item" href="#">Veg dog Food</a></li>
+            <li><a class="dropdown-item" href="#">Grain free dog food</a></li>
+            <li><a class="dropdown-item" href="#">Human grade food</a></li>
+            <li><a class="dropdown-item" href="#">Low grain dog Food</a></li>
+            <li><a class="dropdown-item" href="#">Prescription dog food</a></li>
+            <li><a class="dropdown-item" href="#">Puppy food</a></li>
+          </div>
+          <div class="co3">
+            <li><a class="dropdown-item" href="#">Clothing</a></li>
+            <li><a class="dropdown-item" href="#">T-shirt</a></li>
+            <li><a class="dropdown-item" href="#">Raincoat</a></li>
+            <li><a class="dropdown-item" href="#">Sweater</a></li>
+            <li><a class="dropdown-item" href="#">Special Occation wear</a></li>
+            <li><a class="dropdown-item" href="#">Hoodies & sweart shirts</a></li>
+            <li><a class="dropdown-item" href="#">Jackets</a></li>
+            <li><a class="dropdown-item" href="#">Shorts</a></li>
+            <li><a class="dropdown-item" href="#">Dresses</a></li>
+            <li><a class="dropdown-item" href="#">Shoes</a></li>
+            <li><a class="dropdown-item" href="#">Bandana</a></li>
+          </div>
+          <div class="co4">
+            <li><a class="dropdown-item" href="#">Dog Toys</a></li>
+            <li><a class="dropdown-item" href="#">Rope Toys</a></li>
+            <li><a class="dropdown-item" href="#">Rough Chewtoys</a></li>
+            <li><a class="dropdown-item" href="#">Chewtoys</a></li>
+            <li><a class="dropdown-item" href="#">Plushtoys</a></li>
+            <li><a class="dropdown-item" href="#">Interactive toys</a></li>
+            <li><a class="dropdown-item" href="#">Squeaky toys</a></li>
+            <li><a class="dropdown-item" href="#">Ball toys</a></li>
+            <li><a class="dropdown-item" href="#">Fetch toys</a></li>
+          </div>
+          <div class="co5">
+            <li><a class="dropdown-item" href="#">Healthcare</a></li>
+            <li><a class="dropdown-item" href="#">Skin Care</a></li>
+            <li><a class="dropdown-item" href="#">eye care</a></li>
+            <li><a class="dropdown-item" href="#">Digestion and immunity</a></li>
+            <li><a class="dropdown-item" href="#">Hip and joint care</a></li>
+            <li><a class="dropdown-item" href="#">Dentel care</a></li>
+            <li><a class="dropdown-item" href="#">Calcium suppliments</a></li>
+            <li><a class="dropdown-item" href="#">Ear care</a></li>
+            <li><a class="dropdown-item" href="#">Deworming</a></li>
+            <li><a class="dropdown-item" href="#">Tick and flea solutions</a></li>
+            <li><a class="dropdown-item" href="#">Antibiotics</a></li>
+          </div>
+          <div class="co6">
+            <li><a class="dropdown-item" href="#">Dog beds and mats</a></li>
+            <li><a class="dropdown-item" href="#">Dog beds</a></li>
+            <li><a class="dropdown-item" href="#">Dog cushions</a></li>
+            <li><a class="dropdown-item" href="#">Dog blankets</a></li>
+            <li><a class="dropdown-item" href="#">Hip and joint care</a></li>
+            <li><a class="dropdown-item" href="#">Dog mats</a></li>
+            <li><a class="dropdown-item" href="#">Wooden furniture</a></li>
+            <li><a class="dropdown-item" href="#">Dog tents</a></li>
+          </div>
+          </div>
+          </ul>
+        </li>
+
+        <!-- Cat -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'cat' %}" id="catDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cat
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="catDropdown">
+            <div class="co1">
+          <div class="co2">
+            <li><a class="dropdown-item" href="#">Kitten Food</a></li>
+            <li><a class="dropdown-item" href="#">Canned cat food</a></li>
+            <li><a class="dropdown-item" href="#">Dry cat food</a></li>
+            <li><a class="dropdown-item" href="#">Gravy cat Food</a></li>
+            <li><a class="dropdown-item" href="#">Grain free cat food</a></li>
+            <li><a class="dropdown-item" href="#">Prescription cat food</a></li>
+          </div>
+          <div class="co3">
+            <li><a class="dropdown-item" href="#">Creamy and natural treats</a></li>
+            <li><a class="dropdown-item" href="#">Creamy cat treats</a></li>
+            <li><a class="dropdown-item" href="#">Natural cat treats</a></li>
+          </div>
+          <div class="co4">
+            <li><a class="dropdown-item" href="#">Cat Toys</a></li>
+            <li><a class="dropdown-item" href="#">Cat Interactive</a></li>
+            <li><a class="dropdown-item" href="#">Toys</a></li>
+            <li><a class="dropdown-item" href="#">Catnip</a></li>
+            <li><a class="dropdown-item" href="#">Plushtoys</a></li>
+          </div>
+          <div class="co5">
+            <li><a class="dropdown-item" href="#">Grooming</a></li>
+            <li><a class="dropdown-item" href="#">Brushes and combs</a></li>
+            <li><a class="dropdown-item" href="#">Cay shamboos and conditionars</a></li>
+            <li><a class="dropdown-item" href="#">Paw and nail care</a></li>
+            <li><a class="dropdown-item" href="#">Trimmers and tools</a></li>
+            <li><a class="dropdown-item" href="#">Waterless care</a></li>
+            <li><a class="dropdown-item" href="#">Bathing supplie</a></li>
+          </div>
+          <div class="co6">
+            <li><a class="dropdown-item" href="#">Cleaning and order control</a></li>
+            <li><a class="dropdown-item" href="#">Wipes and stain removers</a></li>
+            <li><a class="dropdown-item" href="#">Diapers and lint rollers</a></li>
+            <li><a class="dropdown-item" href="#">Cat deodorieses</a></li>
+          </div>
+          </div>
+          </ul>
+        </li>
+
+        <!-- Small pets -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'smallpet' %}" id="smallPetsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Small pets
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="smallPetsDropdown">
+            <li><a class="dropdown-item" href="#">Hamsters</a></li>
+            <li><a class="dropdown-item" href="#">Guinea Pigs</a></li>
+            <li><a class="dropdown-item" href="#">Rabbits</a></li>
+            <li><a class="dropdown-item" href="#">Rats</a></li>
+            <li><a class="dropdown-item" href="#">Fish</a></li>
+  
+        </ul>
+        </li>
+
+        <!-- Pet Service -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'petservice' %}" id="serviceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pet Service
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="serviceDropdown">
+            <div class="co1">
+          <div class="co2">
+            <li><a class="dropdown-item" href="#">Grooming saloon</a></li>
+            <li><a class="dropdown-item" href="#">Training classes</a></li>
+            <li><a class="dropdown-item" href="#">Pet hostal boarding</a></li>
+            <li><a class="dropdown-item" href="#">Doggy day camp</a></li>
+            <li><a class="dropdown-item" href="#">Veterinary care</a></li>
+          </div>
+          <div class="co3">
+            <li><a class="dropdown-item" href="#">Adoption</a></li>
+            <li><a class="dropdown-item" href="#">Pet Adoption</a></li>
+            <li><a class="dropdown-item" href="#">Pet palooza charities</a></li>
+          </div>
+          </div>
+          </ul>
+        </li>
+
+        <!-- Shop by Brand -->
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Shop by Brand
+  </a>
+  <ul class="dropdown-menu p-3" aria-labelledby="brandDropdown">
+    <div class="row g-3 brand-logos">
+      <div class="col-3"><img src="{% static 'images/d4cf522d292aa847ce59f69d812628ce.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/8syalznvpv081.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/fb97386faa6e94e91c9e6438e288879e.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/images.png' %}" class="img-fluid"></div>
+
+      <div class="col-3"><img src="{% static 'images/shebalogo.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/Farmina-Logo.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/LOZALO_Brand_Logo_439668df-a243-4bdc-b086-5abdf9e55328.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/me-o.png' %}" class="img-fluid"></div>
+
+      <div class="col-3"><img src="{% static 'images/Champion_Petfoods_ORIJEN_Logo.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/top-tails-website-banner-1920-x-650-3.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/why-choose.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/image 1.png' %}" class="img-fluid"></div>
+    </div>
+  </ul>
+</li>
+
+
+        <!-- Shop by Breed -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="breedDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop by Breed
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="breedDropdown">
+            <li><a class="dropdown-item" href="#">Labrador</a></li>
+            <li><a class="dropdown-item" href="#">German Shepherd</a></li>
+            <li><a class="dropdown-item" href="#">Bulldog</a></li>
+          </ul>
+        </li>
+
+        <!-- Consult a Vet -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'consult' %}">Consult a Vet</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<div id="petCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#petCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <div class="row h-100">
+        <div class="col-md-6 carousel-left">
+          <img src="{% static 'images/wmremove-transformed (1).png' %}" alt="Dog in Raincoat">
+        </div>
+        <div class="col-md-6 carousel-right position-relative">
+          <h2>Monsoon Edition<br>for Dogs</h2>
+          <div class="icon-text">
+            <i class="bi bi-umbrella"></i>
+            <span>100% Water Proof</span>
+          </div>
+          <a href="{% url 'cart' %}"><button class="shop-btn">Shop Now</button></a>
+          <img src="{% static 'images/Adobe Express - file (1) (1).png' %}" class="umbrella" alt="Umbrella">
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <div class="row h-100">
+        <div class="col-md-6 carousel-left">
+          <img src="{% static 'images/IMG_20250611_125313_824-removebg-preview (1).png' %}" alt="Dog Style">
+        </div>
+        <div class="col-md-6 carousel-right position-relative">
+          <h2>Winter Edition<br>for Pets</h2>
+          <div class="icon-text">
+            <i class="bi bi-snow"></i>
+            <span>Warm & Cozy</span>
+          </div>
+          <button class="shop-btn">Shop Now</button>
+          <img src="{% static 'images/Adobe Express - file (1) (1).png' %}" class="umbrella" alt="Umbrella">
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <div class="row h-100">
+        <div class="col-md-6 carousel-left">
+          <img src="{% static 'images/IMG_20250611_125307_906-removebg-preview (1).png' %}" alt="Dog Outfit">
+        </div>
+        <div class="col-md-6 carousel-right position-relative">
+          <h2>Summer Edition<br>for Dogs</h2>
+          <div class="icon-text">
+            <i class="bi bi-sun"></i>
+            <span>Light & Cool</span>
+          </div>
+          <button class="shop-btn">Shop Now</button>
+          <img src="{% static 'images/Adobe Express - file (1) (1).png' %}" class="umbrella" alt="Umbrella">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+<div class="container text-center my-5">
+  <h2 class="mb-4">Shop by Pet</h2>
+
+  <div id="petCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <!-- First slide -->
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-around">
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140750_224-removebg-preview (1).png' %}" alt="Dog">
+            </div>
+            <div class="pet-label">Dog</div>
+          </div>
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140752_902-removebg-preview (1).png' %}" alt="Cat">
+            </div>
+            <div class="pet-label">Cat</div>
+          </div>
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140755_766-removebg-preview (1).png' %}" alt="Hamsters">
+            </div>
+            <div class="pet-label">Hamsters</div>
+          </div>
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140849_503-removebg-preview (1).png' %}" alt="Guinea pigs">
+            </div>
+            <div class="pet-label">Guinea pigs</div>
+          </div>
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140842_567-removebg-preview (1).png' %}" alt="Fish">
+            </div>
+            <div class="pet-label">Fish</div>
+          </div>
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140932_779-removebg-preview (1).png' %}" alt="Fish">
+            </div>
+            <div class="pet-label">Rats</div>
+          </div>
+          <div>
+            <div class="pet-card">
+              <img src="{% static 'images/IMG_20250611_140948_250-removebg-preview (1).png' %}" alt="Fish">
+            </div>
+            <div class="pet-label">Rabbits</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- You can add more carousel-item here for scrolling more pets -->
+
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#petCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#petCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+<div class="container my-5">
+  <h2 class="mb-4 text-center">Top Rated Calming Products</h2>
+  <div class="row">
+    
+    <!-- Left Promo Image -->
+    <div class="col-md-3">
+      <div class="card border-0">
+        <img src="{% static 'images/1home.jpg' %}" class="card-img-top" alt="Calming Pets">
+        <div class="card-body text-center">
+          <h5 class="card-title"><b>Stress-Free Summer</b></h5>
+          <p class="card-text">Keep your pup calm along all season</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Product Slider -->
+    <div class="col-md-9">
+      <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <div class="d-flex">
+              <!-- Product 1 -->
+              <div class="product-card me-3">
+                <img src="{% static 'images/image (44).png' %}" class="img-fluid mb-2" alt="Native Pet">
+                <h6>Native Pet Calm Chews for Dogs - Anxiety & Calming Supplement</h6>
+                <div class="star-rating">★★★★★</div>
+                <p>₹ 299</p>
+              </div>
+
+              <!-- Product 2 -->
+              <div class="product-card me-3">
+                <img src="{% static 'images/image (7).png' %}" class="img-fluid mb-2" alt="Zesty Paws">
+                <h6>Zesty Paws Advanced Calming Bites for Dogs</h6>
+                <div class="star-rating">★★★★☆</div>
+                <p>₹ 309</p>
+              </div>
+
+              <!-- Product 3 -->
+              <div class="product-card me-3">
+                <img src="{% static 'images/image (8).png' %}" class="img-fluid mb-2" alt="VetIQ">
+                <h6>VetIQ Calming - 60 Count</h6>
+                <div class="star-rating">★★★★★</div>
+                <p>₹ 459</p>
+              </div>
+
+              <!-- Product 4 -->
+              <div class="product-card">
+                <img src="{% static 'images/image (9).png' %}" class="img-fluid mb-2" alt="Pet Honesty">
+                <h6>Pet Honesty Hemp Calming Max Strength Soft Chews</h6>
+                <div class="star-rating">★★★☆☆</div>
+                <p>₹ 599</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Add more carousel-item slides for more products -->
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-5">
+  <div class="row promo-section shadow">
+    
+    <!-- Left Content -->
+    <div class="col-md-6 promo-left">
+      <h3>Store - Door savings with Autoship.</h3>
+      <p>SAVE 35% on first order plus stack limited-time deals on top Autoship-items, see terms</p>
+      <button class="promo-btn">Shop & Save</button>
+    </div>
+    
+    <!-- Right Image -->
+    <div class="col-md-6 promo-img">
+      <img src="{% static 'images/IMG_20250611_151037_116.png' %}" alt="Dog and Cat">
+      <div class="promo-badge">Save<br>35%</div>
+    </div>
+
+  </div>
+</div>
+<div class="container my-5">
+  
+  <!-- Promo Banner -->
+  <div class="promo-banner shadow">
+    <div>
+      <h5>Buy 1 blue wilderness dry dog food, 13-28lbs,<br> get 2 free wild cut Toppers*</h5>
+    </div>
+    <img src="{% static 'images/image (12).png' %}" alt="Dog Food">
+    <a href="{% url 'cart' %}"><button class="promo-btn">Shop Now</button></a>
+  </div>
+
+  <!-- Services Section -->
+  <div class="services-section">
+    <h2 class="fw-bold">Pet Services</h2>
+    <p class="text-muted">Treats Rewards members earn points on every service</p>
+
+    <div class="row mt-4">
+      <!-- Grooming -->
+      <div class="col-md-3">
+        <div class="service-card shadow">
+          <img src="{% static 'images/IMG_20250611_153030_882.png' %}" alt="Grooming">
+          <h5 class="service-title">Grooming</h5>
+          <p class="service-desc">Summer Salon Special<br>Bandana, toy & more plus 2X points</p>
+        </div>
+      </div>
+
+      <!-- Training -->
+      <div class="col-md-3">
+        <div class="service-card shadow">
+          <img src="{% static 'images/IMG_20250611_153040_224.png' %}" alt="Training">
+          <h5 class="service-title">Training</h5>
+          <p class="service-desc">Any 6-wk. Training Class<br>ONLY $129 (that’s $21.50 a week)</p>
+        </div>
+      </div>
+
+      <!-- Petshotel -->
+      <div class="col-md-3">
+        <div class="service-card shadow">
+          <img src="{% static 'images/IMG_20250611_153124_011.png' %}" alt="Petshotel">
+          <h5 class="service-title">Petshotel</h5>
+          <p class="service-desc">Stay 4 nights<br>get the 5th night FREE</p>
+        </div>
+      </div>
+
+      <!-- Diggy Day Camp -->
+      <div class="col-md-3">
+        <div class="service-card shadow">
+          <img src="{% static 'images/IMG_20250611_153133_987.png' %}" alt="Diggy Day Camp">
+          <h5 class="service-title">Diggy Day Camp</h5>
+          <p class="service-desc">New Camper Special<br>SAVE 50% on 1st day of play</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- Footer -->
+<footer class="container-fluid">
+  <div class="row">
+    
+    <!-- Logo + Links -->
+    <div class="col-md-2 mb-4">
+      <img src="{% static 'images/logo.jpg' %}">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="col-md-2 mb-4">
+      <h5>Categories</h5>
+      <ul>
+        <li><a href="#">Dog</a></li>
+        <li><a href="#">Cat</a></li>
+        <li><a href="#">Fish</a></li>
+        <li><a href="#">Rats</a></li>
+        <li><a href="#">Rabbits</a></li>
+        <li><a href="#">Hamsters</a></li>
+        <li><a href="#">Guinea Pigs</a></li>
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div class="col-md-2 mb-4">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund & Returns Policy</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Social + Contact -->
+    <div class="col-md-3 mb-4">
+      <h5>Follow</h5>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <h5 class="mt-3">Get in Touch</h5>
+      <p>Call: +91-1234567890</p>
+      <p>Email: support@petpalooza.com</p>
+    </div>
+
+    <!-- Subscribe -->
+    <div class="col-md-3 mb-4">
+      <h5>For Subscribe,</h5>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Email">
+        <button>Subscribe Now</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

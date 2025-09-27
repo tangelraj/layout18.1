@@ -1,0 +1,721 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Top Contact Bar */
+    .top-bar {
+      background: #f1f1f1;
+      padding: 5px 30px;
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+    }
+    .top-bar i {
+      margin-right: 5px;
+      color: black;
+    }
+    .top-bar a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* Main Navbar */
+    .navbar-custom {
+      background-color: #1f4ed8; /* Blue */
+      padding: 10px 30px;
+    }
+
+    .navbar-custom .navbar-brand {
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .navbar-custom .nav-link {
+      font-weight: 600;
+      color: white !important;
+      margin: 0 8px;
+    }
+
+    .navbar-custom .nav-link.active {
+      color: yellow !important;
+    }
+
+    .search-bar {
+      width: 350px;
+      border-radius: 50px;
+      padding-left: 35px;
+    }
+
+    .search-wrapper {
+      position: relative;
+    }
+
+    .search-wrapper i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: black;
+      font-size: 18px;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: yellow;
+      color: black;
+      border-radius: 50%;
+      padding: 2px 6px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+     .custom-navbar {
+      background-color: #1a4dc9; /* Blue background */
+    }
+    .custom-navbar .nav-link {
+      color: white;
+      font-weight: 600;
+      margin-right: 15px;
+    }
+    .custom-navbar .nav-link:hover,
+    .custom-navbar .dropdown:hover > .nav-link {
+      color: #ffd700; /* Gold hover */
+    }
+    .dropdown-menu {
+      border-radius: 0.5rem;
+      
+    }
+    .co1{
+        display: flex;
+        flex-direction: row;
+    }
+   
+    .order-summary {
+      background-color: #b3ffb3; /* light green */
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .order-summary img {
+      width: 80px;
+      height: auto;
+    }
+    .order-summary .product-title {
+      font-weight: 600;
+    }
+    .order-summary .price {
+      font-weight: bold;
+    }
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #4CAF50;
+    }
+    .apply-btn {
+      background-color: #2e54ff;
+      color: #fff;
+      font-weight: bold;
+    }
+    .apply-btn:hover {
+      background-color: #2342cc;
+    }
+    .payment-method {
+            border: 1px solid #ccc;
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .payment-method:hover {
+            border-color: #0d6efd;
+        }
+        .payment-method.active {
+            border-color: #0d6efd;
+            background-color: #e7f0ff;
+        }
+        .payment-icons img {
+            height: 24px;
+            margin-left: 10px;
+        }
+        .order-btn {
+            background-color: #0d6efd;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            padding: 12px;
+            width: 100%;
+            border: none;
+        }
+        .order-btn:hover {
+            background-color: #0b5ed7;
+        }
+        .radio-input {
+            margin-right: 10px;
+        }
+         footer {
+      background-color: #0d47a1; /* Blue background */
+      color: white;
+      padding: 50px 20px 30px;
+      border-radius: 15px 15px 0 0;
+    }
+    footer h5 {
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    footer ul li {
+      margin-bottom: 8px;
+    }
+    footer ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
+    }
+    footer ul li a:hover {
+      color: #ffeb3b; /* Yellow on hover */
+    }
+    .social-icons a {
+      color: white;
+      font-size: 1.3rem;
+      margin-right: 12px;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #ffeb3b;
+    }
+    .subscribe-box input {
+      border-radius: 5px;
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border: none;
+    }
+    .subscribe-box button {
+      background: white;
+      color: #0d47a1;
+      font-weight: bold;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      transition: 0.3s;
+    }
+    .subscribe-box button:hover {
+      background: #ffeb3b;
+      color: black;
+    }
+    </style>
+</head>
+<body>
+         <!-- Top Contact Bar -->
+  <div class="top-bar">
+    <span><i class="bi bi-telephone"></i> +91-1234567890</span>
+    <a href="mailto:Support@petpalooza.com"><i class="bi bi-envelope"></i> Support@petpalooza.com</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'images/logo.jpg' %}">
+      </a>
+
+      <!-- Search Bar -->
+      <div class="search-wrapper mx-3">
+        <i class="bi bi-search"></i>
+        <input class="form-control search-bar" type="search" placeholder="Search for products">
+      </div>
+
+      <!-- Hamburger for mobile -->
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-lg-center">
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'index' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person"></i> Log In</a>
+          </li>
+          <li class="nav-item position-relative">
+            <a class="nav-link" href="{% url 'cart' %}"><i class="bi bi-cart"></i> Cart</a>
+            <span class="cart-badge">1</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid justify-content-center">
+      <ul class="navbar-nav">
+        <!-- Dog -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'dog' %}" id="dogDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dog
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dogDropdown">
+          <div class="co1">
+          <div class="co2">
+            <li><a class="dropdown-item" href="#">Dry & Wet Food</a></li>
+            <li><a class="dropdown-item" href="#">Dry dog food</a></li>
+            <li><a class="dropdown-item" href="#">Wet dog food</a></li>
+            <li><a class="dropdown-item" href="#">Veg dog Food</a></li>
+            <li><a class="dropdown-item" href="#">Grain free dog food</a></li>
+            <li><a class="dropdown-item" href="#">Human grade food</a></li>
+            <li><a class="dropdown-item" href="#">Low grain dog Food</a></li>
+            <li><a class="dropdown-item" href="#">Prescription dog food</a></li>
+            <li><a class="dropdown-item" href="#">Puppy food</a></li>
+          </div>
+          <div class="co3">
+            <li><a class="dropdown-item" href="#">Clothing</a></li>
+            <li><a class="dropdown-item" href="#">T-shirt</a></li>
+            <li><a class="dropdown-item" href="#">Raincoat</a></li>
+            <li><a class="dropdown-item" href="#">Sweater</a></li>
+            <li><a class="dropdown-item" href="#">Special Occation wear</a></li>
+            <li><a class="dropdown-item" href="#">Hoodies & sweart shirts</a></li>
+            <li><a class="dropdown-item" href="#">Jackets</a></li>
+            <li><a class="dropdown-item" href="#">Shorts</a></li>
+            <li><a class="dropdown-item" href="#">Dresses</a></li>
+            <li><a class="dropdown-item" href="#">Shoes</a></li>
+            <li><a class="dropdown-item" href="#">Bandana</a></li>
+          </div>
+          <div class="co4">
+            <li><a class="dropdown-item" href="#">Dog Toys</a></li>
+            <li><a class="dropdown-item" href="#">Rope Toys</a></li>
+            <li><a class="dropdown-item" href="#">Rough Chewtoys</a></li>
+            <li><a class="dropdown-item" href="#">Chewtoys</a></li>
+            <li><a class="dropdown-item" href="#">Plushtoys</a></li>
+            <li><a class="dropdown-item" href="#">Interactive toys</a></li>
+            <li><a class="dropdown-item" href="#">Squeaky toys</a></li>
+            <li><a class="dropdown-item" href="#">Ball toys</a></li>
+            <li><a class="dropdown-item" href="#">Fetch toys</a></li>
+          </div>
+          <div class="co5">
+            <li><a class="dropdown-item" href="#">Healthcare</a></li>
+            <li><a class="dropdown-item" href="#">Skin Care</a></li>
+            <li><a class="dropdown-item" href="#">eye care</a></li>
+            <li><a class="dropdown-item" href="#">Digestion and immunity</a></li>
+            <li><a class="dropdown-item" href="#">Hip and joint care</a></li>
+            <li><a class="dropdown-item" href="#">Dentel care</a></li>
+            <li><a class="dropdown-item" href="#">Calcium suppliments</a></li>
+            <li><a class="dropdown-item" href="#">Ear care</a></li>
+            <li><a class="dropdown-item" href="#">Deworming</a></li>
+            <li><a class="dropdown-item" href="#">Tick and flea solutions</a></li>
+            <li><a class="dropdown-item" href="#">Antibiotics</a></li>
+          </div>
+          <div class="co6">
+            <li><a class="dropdown-item" href="#">Dog beds and mats</a></li>
+            <li><a class="dropdown-item" href="#">Dog beds</a></li>
+            <li><a class="dropdown-item" href="#">Dog cushions</a></li>
+            <li><a class="dropdown-item" href="#">Dog blankets</a></li>
+            <li><a class="dropdown-item" href="#">Hip and joint care</a></li>
+            <li><a class="dropdown-item" href="#">Dog mats</a></li>
+            <li><a class="dropdown-item" href="#">Wooden furniture</a></li>
+            <li><a class="dropdown-item" href="#">Dog tents</a></li>
+          </div>
+          </div>
+          </ul>
+        </li>
+
+        <!-- Cat -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'cat' %}" id="catDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Cat
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="catDropdown">
+            <div class="co1">
+          <div class="co2">
+            <li><a class="dropdown-item" href="#">Kitten Food</a></li>
+            <li><a class="dropdown-item" href="#">Canned cat food</a></li>
+            <li><a class="dropdown-item" href="#">Dry cat food</a></li>
+            <li><a class="dropdown-item" href="#">Gravy cat Food</a></li>
+            <li><a class="dropdown-item" href="#">Grain free cat food</a></li>
+            <li><a class="dropdown-item" href="#">Prescription cat food</a></li>
+          </div>
+          <div class="co3">
+            <li><a class="dropdown-item" href="#">Creamy and natural treats</a></li>
+            <li><a class="dropdown-item" href="#">Creamy cat treats</a></li>
+            <li><a class="dropdown-item" href="#">Natural cat treats</a></li>
+          </div>
+          <div class="co4">
+            <li><a class="dropdown-item" href="#">Cat Toys</a></li>
+            <li><a class="dropdown-item" href="#">Cat Interactive</a></li>
+            <li><a class="dropdown-item" href="#">Toys</a></li>
+            <li><a class="dropdown-item" href="#">Catnip</a></li>
+            <li><a class="dropdown-item" href="#">Plushtoys</a></li>
+          </div>
+          <div class="co5">
+            <li><a class="dropdown-item" href="#">Grooming</a></li>
+            <li><a class="dropdown-item" href="#">Brushes and combs</a></li>
+            <li><a class="dropdown-item" href="#">Cay shamboos and conditionars</a></li>
+            <li><a class="dropdown-item" href="#">Paw and nail care</a></li>
+            <li><a class="dropdown-item" href="#">Trimmers and tools</a></li>
+            <li><a class="dropdown-item" href="#">Waterless care</a></li>
+            <li><a class="dropdown-item" href="#">Bathing supplie</a></li>
+          </div>
+          <div class="co6">
+            <li><a class="dropdown-item" href="#">Cleaning and order control</a></li>
+            <li><a class="dropdown-item" href="#">Wipes and stain removers</a></li>
+            <li><a class="dropdown-item" href="#">Diapers and lint rollers</a></li>
+            <li><a class="dropdown-item" href="#">Cat deodorieses</a></li>
+          </div>
+          </div>
+          </ul>
+        </li>
+
+        <!-- Small pets -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'smallpet' %}" id="smallPetsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Small pets
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="smallPetsDropdown">
+            <li><a class="dropdown-item" href="#">Hamsters</a></li>
+            <li><a class="dropdown-item" href="#">Guinea Pigs</a></li>
+            <li><a class="dropdown-item" href="#">Rabbits</a></li>
+            <li><a class="dropdown-item" href="#">Rats</a></li>
+            <li><a class="dropdown-item" href="#">Fish</a></li>
+  
+        </ul>
+        </li>
+
+        <!-- Pet Service -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="{% url 'petservice' %}" id="serviceDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Pet Service
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="serviceDropdown">
+            <div class="co1">
+          <div class="co2">
+            <li><a class="dropdown-item" href="#">Grooming saloon</a></li>
+            <li><a class="dropdown-item" href="#">Training classes</a></li>
+            <li><a class="dropdown-item" href="#">Pet hostal boarding</a></li>
+            <li><a class="dropdown-item" href="#">Doggy day camp</a></li>
+            <li><a class="dropdown-item" href="#">Veterinary care</a></li>
+          </div>
+          <div class="co3">
+            <li><a class="dropdown-item" href="#">Adoption</a></li>
+            <li><a class="dropdown-item" href="#">Pet Adoption</a></li>
+            <li><a class="dropdown-item" href="#">Pet palooza charities</a></li>
+          </div>
+          </div>
+          </ul>
+        </li>
+
+        <!-- Shop by Brand -->
+        <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="brandDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Shop by Brand
+  </a>
+  <ul class="dropdown-menu p-3" aria-labelledby="brandDropdown">
+    <div class="row g-3 brand-logos">
+      <div class="col-3"><img src="{% static 'images/d4cf522d292aa847ce59f69d812628ce.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/8syalznvpv081.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/fb97386faa6e94e91c9e6438e288879e.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/images.png' %}" class="img-fluid"></div>
+
+      <div class="col-3"><img src="{% static 'images/shebalogo.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/Farmina-Logo.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/LOZALO_Brand_Logo_439668df-a243-4bdc-b086-5abdf9e55328.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/me-o.png' %}" class="img-fluid"></div>
+
+      <div class="col-3"><img src="{% static 'images/Champion_Petfoods_ORIJEN_Logo.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/top-tails-website-banner-1920-x-650-3.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/why-choose.png' %}" class="img-fluid"></div>
+      <div class="col-3"><img src="{% static 'images/image 1.png' %}" class="img-fluid"></div>
+    </div>
+  </ul>
+</li>
+
+
+        <!-- Shop by Breed -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="breedDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Shop by Breed
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="breedDropdown">
+            <li><a class="dropdown-item" href="#">Labrador</a></li>
+            <li><a class="dropdown-item" href="#">German Shepherd</a></li>
+            <li><a class="dropdown-item" href="#">Bulldog</a></li>
+          </ul>
+        </li>
+
+        <!-- Consult a Vet -->
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'consult' %}">Consult a Vet</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; font-size: 14px;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Dog</a></li>
+        <li class="breadcrumb-item"><a href="#">Turkey, Chickpea & Sweet Potato</a></li>
+        <li class="breadcrumb-item active">Checkout</li>
+      </ol>
+    </nav>
+
+    <h2 class="fw-bold mb-4 text-center">Checkout</h2>
+
+    <div class="row">
+      <!-- Left Side -->
+      <div class="col-lg-7">
+        <h5 class="fw-bold mb-3">Contact</h5>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Email (for order updates)">
+        </div>
+        <div class="form-check mb-4">
+          <input class="form-check-input" type="checkbox" id="updatesCheckbox" checked>
+          <label class="form-check-label" for="updatesCheckbox">
+            Send me order updates, news and offers on Email and WhatsApp
+          </label>
+        </div>
+
+        <!-- Delivery Form -->
+        <h5 class="fw-bold mb-3">Delivery</h5>
+        <div class="mb-3">
+          <select class="form-select">
+            <option>India</option>
+            <option>USA</option>
+            <option>UK</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="First name">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Last name">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Address">
+        </div>
+
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Apartment, suite (Optional)">
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="City">
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="State">
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Pincode">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <input type="tel" class="form-control" placeholder="Phone">
+        </div>
+
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" id="saveInfo" checked>
+          <label class="form-check-label" for="saveInfo">
+            Save this information for next time
+          </label>
+        </div>
+        <div class="container">
+    <h3 class="mb-4">Choose your payment method</h3>
+
+    <div class="payment-method" id="onlinePayment">
+        <div class="d-flex align-items-center">
+            <input type="radio" name="payment" class="radio-input" value="online">
+            <span>Secure transaction (UPI, Cards, Wallets, Net banking)</span>
+        </div>
+        <div class="payment-icons">
+            <img src="{% static 'images/https://upload.wikimedia.org/wikipedia/commons/5/5e/Google_Pay_Logo.svg' %}" alt="GPay">
+            <img src="{% static 'images/https://upload.wikimedia.org/wikipedia/commons/8/8e/PhonePe_Logo.png' %}" alt="PhonePe">
+            <img src="{% static 'images/https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png' %}" alt="MasterCard">
+            <img src="{% static 'images/https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg' %}" alt="PayPal">
+            <img src="{% static 'images/https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_2014_logo_detail.svg' %}" alt="Visa">
+        </div>
+    </div>
+
+    <div class="payment-method" id="codPayment">
+        <div class="d-flex align-items-center">
+            <input type="radio" name="payment" class="radio-input" value="cod">
+            <span>Cash on Delivery</span>
+        </div>
+    </div>
+
+    <a href="{% url 'thank' %}"><button class="order-btn mt-3" id="orderNow">Order Now</button></a>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const paymentMethods = document.querySelectorAll('.payment-method');
+    const orderBtn = document.getElementById('orderNow');
+
+    paymentMethods.forEach(method => {
+        method.addEventListener('click', () => {
+            paymentMethods.forEach(m => m.classList.remove('active'));
+            method.classList.add('active');
+            method.querySelector('input[type="radio"]').checked = true;
+        });
+    });
+
+    orderBtn.addEventListener('click', () => {
+        const selectedPayment = document.querySelector('input[name="payment"]:checked');
+        if (selectedPayment) {
+            alert('Payment method selected: ' + selectedPayment.value);
+        } else {
+            alert('Please select a payment method!');
+        }
+    });
+</script>
+      </div>
+
+      <!-- Right Side -->
+      <div class="col-lg-5">
+        <div class="order-summary">
+          <h5 class="fw-bold mb-3">Order summary</h5>
+          <div class="d-flex align-items-center mb-3">
+            <img src="{% static 'images/https://via.placeholder.com/80x100' %}" alt="Product Image">
+            <div class="ms-3">
+              <div class="product-title">Turkey, Chickpea & Sweet Potato<br>Small Breed 2Kg</div>
+              <div>MRP: ₹1,899</div>
+              <div>Quantity: 1</div>
+              <div>Size: 1kg</div>
+            </div>
+          </div>
+
+          <!-- Discount Input -->
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Discount code or gift card">
+            <button class="btn apply-btn">Apply</button>
+          </div>
+
+          <!-- Pricing -->
+          <div class="d-flex justify-content-between mb-2">
+            <span>Sub total</span>
+            <span>₹1,899</span>
+          </div>
+          <hr>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Shipping</span>
+            <span>Flat rate : ₹99.00</span>
+          </div>
+          <div class="text-muted small mb-2">Shipping to Madhya Pradesh.</div>
+          <hr>
+          <div class="d-flex justify-content-between fw-bold fs-5">
+            <span>Total</span>
+            <span>₹1,998</span>
+          </div>
+          <div class="text-muted small">(includes ₹251.62 CGST, ₹251.62 SGST)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+ <!-- Footer -->
+<footer class="container-fluid">
+  <div class="row">
+    
+    <!-- Logo + Links -->
+    <div class="col-md-2 mb-4">
+      <img src="{% static 'images/logo.jpg' %}">
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="col-md-2 mb-4">
+      <h5>Categories</h5>
+      <ul>
+        <li><a href="#">Dog</a></li>
+        <li><a href="#">Cat</a></li>
+        <li><a href="#">Fish</a></li>
+        <li><a href="#">Rats</a></li>
+        <li><a href="#">Rabbits</a></li>
+        <li><a href="#">Hamsters</a></li>
+        <li><a href="#">Guinea Pigs</a></li>
+      </ul>
+    </div>
+
+    <!-- Support -->
+    <div class="col-md-2 mb-4">
+      <h5>Support</h5>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Refund & Returns Policy</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+      </ul>
+    </div>
+
+    <!-- Social + Contact -->
+    <div class="col-md-3 mb-4">
+      <h5>Follow</h5>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+
+      <h5 class="mt-3">Get in Touch</h5>
+      <p>Call: +91-1234567890</p>
+      <p>Email: support@petpalooza.com</p>
+    </div>
+
+    <!-- Subscribe -->
+    <div class="col-md-3 mb-4">
+      <h5>For Subscribe,</h5>
+      <div class="subscribe-box">
+        <input type="email" placeholder="Email">
+        <button>Subscribe Now</button>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
